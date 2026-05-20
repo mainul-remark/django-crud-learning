@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 
 from brands.models import Brand
 
@@ -17,3 +18,6 @@ class BrandForm(forms.ModelForm):
 
     def clean_slug(self):
         slug = self.cleaned_data['slug'].strip().lower()
+        if slug != slugify(slug):
+            raise ValidationError('Brand Slug must be lowercase.')
+        return slug
