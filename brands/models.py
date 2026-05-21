@@ -11,6 +11,7 @@ class Brand(models.Model):
     website = models.CharField(max_length=150, blank=True)
     status = models.SmallIntegerField(default=1, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["name"]
